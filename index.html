@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ශ්‍රී සමුද්‍රාරාම විහාරය - Sri Samudrarama Viharaya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8941E;
+            --saffron: #FF9933;
+            --maroon: #800000;
+            --cream: #FFF8DC;
+            --white: #FFFFFF;
+            --dark: #2C1810;
+            --light-bg: #FFF5E6;
+        }
+
+        body {
+            font-family: 'Noto Serif Sinhala', 'Noto Serif', Georgia, serif;
+            color: var(--dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: linear-gradient(135deg, var(--maroon) 0%, #5C0000 100%);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(140, 24, 24, 0.7), rgba(44, 24, 16, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23800000" width="1200" height="800"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🪷';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-20px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .blessing {
+            font-size: 1.3rem;
+            color: var(--cream);
+            margin: 2rem 0;
+            font-style: italic;
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            color: var(--maroon);
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 2rem;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s;
+            animation: fadeInUp 1.6s ease, pulse 2s ease-in-out infinite;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 8px 35px rgba(212, 175, 55, 0.7); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '☸';
+            display: block;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-top: 0.5rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--saffron);
+            margin-bottom: 3rem;
+        }
+
+        #about {
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--gold), var(--saffron));
+            z-index: -1;
+            border-radius: 10px;
+        }
+
+        .temple-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--maroon), var(--dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--gold);
+        }
+
+        #perahera {
+            background: linear-gradient(to bottom, var(--white), var(--light-bg));
+        }
+
+        .perahera-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 2;
+        }
+
+        .perahera-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .perahera-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .perahera-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-content h3 {
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--maroon), var(--saffron));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        #events {
+            background: var(--cream);
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .pooja-times, .special-events {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .pooja-times h3, .special-events h3 {
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .pooja-item, .event-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--light-bg);
+            border-left: 4px solid var(--saffron);
+            border-radius: 5px;
+        }
+
+        .pooja-item strong, .event-item strong {
+            color: var(--maroon);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        #donate {
+            background: linear-gradient(135deg, var(--maroon) 0%, #5C0000 100%);
+            color: white;
+        }
+
+        .donate-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            color: var(--dark);
+        }
+
+        .donate-container h2 {
+            color: var(--maroon);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .donation-amount {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 10px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .donation-amount:hover {
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .donation-amount strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--maroon);
+        }
+
+        .payment-methods {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 10px;
+        }
+
+        .payment-methods h4 {
+            color: var(--maroon);
+            margin-bottom: 1rem;
+        }
+
+        .gratitude {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 10px;
+            font-style: italic;
+            color: var(--maroon);
+        }
+
+        #contact {
+            background: var(--light-bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+        }
+
+        .contact-item i {
+            color: var(--saffron);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: 400px;
+            background: linear-gradient(135deg, var(--maroon), var(--saffron));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--maroon) 100%);
+            color: var(--cream);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--saffron);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: var(--saffron);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            margin: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .about-content,
+            .events-container,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span>🪷</span> ශ්‍රී සමුද්‍රාරාම විහාරය
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">මුල් පිටුව</a></li>
+                <li><a href="#about">විහාරය ගැන</a></li>
+                <li><a href="#perahera">පෙරහැර</a></li>
+                <li><a href="#events">වැඩසටහන්</a></li>
+                <li><a href="#donate">දායකත්වය</a></li>
+                <li><a href="#contact">සම්බන්ධ වන්න</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>ශ්‍රී සමුද්‍රාරාම විහාරය</h1>
+            <p class="hero-subtitle">Sri Samudrarama Viharaya</p>
+            <p class="blessing">
+                "සබ්බදානං ධම්මදානං ජිනාති"<br>
+                සියලු දානයන්ගෙන් ධර්ම දානය ශ්‍රේෂ්ඨ වේ
+            </p>
+            <a href="#donate" class="cta-primary">
+                👉 වාද්දූව පොසොන් මහා පෙරහැර සඳහා දායක වන්න
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">විහාරය පිළිබඳව</h2>
+        <p class="section-subtitle">About Our Sacred Temple</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    ශ්‍රී සමුද්‍රාරාම විහාරය යනු ශ්‍රී ලංකාවේ බෞද්ධ උරුමයේ අතිශය වැදගත් ස්ථානයකි. මෙම ශුද්ධ භූමිය පරම්පරා ගණනාවක් පුරා ධර්ම ඉගැන්වීම්, භාවනා සහ අධ්‍යාත්මික මඟ පෙන්වීම සඳහා කැප වී ඇත.
+                </p>
+                <p>
+                    අපගේ විහාරය දේශීය ප්‍රජාවට බෞද්ධ සාම්ප්‍රදායික උත්සව, පින්කම් සහ ධර්ම දේශනා තුළින් මඟ පෙන්වීමේ ප්‍රධාන මධ්‍යස්ථානයක් ලෙස කටයුතු කරයි. සාමය, කරුණාව සහ ප්‍රඥාව වඩන සියලු දෙනාට විවෘතයි.
+                </p>
+                <p>
+                    <strong>අපගේ මෙහෙවර:</strong> බුදු දහමේ පවිත්‍ර ඉගැන්වීම් රැක බලා ගැනීම සහ සියලු සත්ත්වයන්ට අධ්‍යාත්මික මාර්ගෝපදේශය ලබා දීම.
+                </p>
+            </div>
+            <div class="about-image">
+                <div class="temple-placeholder">🛕</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="perahera">
+        <h2 class="section-title">වාද්දූව පොසොන් මහා පෙරහැර</h2>
+        <p class="section-subtitle">Vadduwa Poson Maha Perahera</p>
+        <div class="perahera-intro">
+            වාද්දූව පොසොන් මහා පෙරහැර යනු අපගේ සංස්කෘතික උරුමයේ වටිනාකමින් පිරි ගෞරවනීය උත්සවයකි. මහා ඇත්තන්, නර්තන ශිල්පීන්, බෙර කරුවන් සහ පන්දම් සහිතව සිදු කරන මෙම පෙරහැර බුදු දහමේ ආගමන සමරන අතර අපගේ සම්ප්‍රදායික සංස්කෘතිය තවදුරටත් පවත්වා ගෙන යාම සඳහා අත්‍යවශ්‍ය වේ.
+        </div>
+
+        <div class="perahera-grid">
+            <div class="perahera-card">
+                <div class="card-image">🐘</div>
+                <div class="card-content">
+                    <h3>මහා ඇත්තන්</h3>
+                    <p>පිරිසිදු සැරසිලි ඇති මහා ඇත්තන් පෙරහැරේ මහිමය වැඩි කරයි. ධාතු කරඬුව රැගෙන යන ගමන සහභාගී වන්නන්ට ආශීර්වාද කරයි.</p>
+                </div>
+            </div>
+            <div class="perahera-card">
+                <div class="card-image">💃</div>
+                <div class="card-content">
+                    <h3>නර්තන හා සංගීතය</h3>
+                    <p>සම්ප්‍රදායික නර්තන ශිල්පීන්, බෙර කරුවන් සහ සංගීතඥයන් පෙරහැරට ජීවය ගෙන එයි. ශ්‍රී ලාංකික නර්තන කලාවේ සුන්දරත්වය ප්‍රදර්ශනය කරයි.</p>
+                </div>
+            </div>
+            <div class="perahera-card">
+                <div class="card-image">🏮</div>
+                <div class="card-content">
+                    <h3>පන්දම් සහ ආලෝකය</h3>
+                    <p>දහස් ගණනක් පන්දම් සහ විදුලි ආලෝක රාත්‍රී අහස දීප්තිමත් කරයි. පෙරහැර මාර්ගය දිව්‍ය ආලෝකයකින් සැරසේ.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#donate" class="btn-secondary">Support the Vadduwa Poson Maha Perahera</a>
+        </div>
+
+        <h3 style="text-align: center; color: var(--maroon); margin-top: 4rem; margin-bottom: 2rem; font-size: 2rem;">
+            පෙරහැර ගැලරිය | Perahera Gallery
+        </h3>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🐘</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">💃</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🏮</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🥁</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🎭</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">🛕</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <h2 class="section-title">වැඩසටහන් සහ පූජා කාලසටහන</h2>
+        <p class="section-subtitle">Events & Pooja Times</p>
+        <div class="events-container">
+            <div class="pooja-times">
+                <h3>දෛනික පූජා වේලා</h3>
+                <div class="pooja-item">
+                    <strong>උදෑසන පූජාව</strong>
+                    5:30 පෙ.ව - බුදු වන්දනාව සහ පිරිත් දේශනය
+                </div>
+                <div class="pooja-item">
+                    <strong>දවල් පූජාව</strong>
+                    11:00 පෙ.ව - දාන පූජාව සහ සංඝයා වහන්සේලා වෙත දන් දීම
+                </div>
+                <div class="pooja-item">
+                    <strong>සවස පූජාව</strong>
+                    6:00 ප.ව - දීප පූජාව සහ ධර්ම දේශනය
+                </div>
+                <div class="pooja-item">
+                    <strong>පෝය දින වැඩසටහන</strong>
+                    සම්පූර්ණ දින පූජා, බෝධි පූජාව සහ අටවිසි බුද්ධ පූජාව
+                </div>
+            </div>
+
+            <div class="special-events">
+                <h3>විශේෂ වැඩසටහන්</h3>
+                <div class="event-item">
+                    <strong>වාද්දූව පොසොන් මහා පෙරහැර</strong>
+                    ජුනි මාසයේ පොසොන් පුර පසළොස්වක<br>
+                    සන්ධ්‍යා 6:00 සිට රාත්‍රී 11:00 දක්වා
+                </div>
+                <div class="event-item">
+                    <strong>වෙසක් උත්සවය</strong>
+                    මැයි මාසයේ පුර පසළොස්වක<br>
+                    දවල් දන්සැල සහ රාත්‍රී තොරණ ප්‍රදර්ශනය
+                </div>
+                <div class="event-item">
+                    <strong>කතිණ චීවර පූජාව</strong>
+                    වස් මාසයෙන් පසු<br>
+                    සංඝයා වහන්සේලා වෙත චීවර පූජා කිරීම
+                </div>
+                <div class="event-item">
+                    <strong>භාවනා වැඩසටහන්</strong>
+                    සෑම සතියකම සෙනසුරාදා සවස 4:00<br>
+                    මහජනතාව සඳහා භාවනා පුහුණුව
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate">
+        <h2 class="section-title" style="color: white;">දායකත්වය</h2>
+        <p class="section-subtitle" style="color: var(--gold);">Support Our Temple & Perahera</p>
+        <div class="donate-container">
+            <h2>වාද්දූව පොසොන් මහා පෙරහැර සඳහා දායක වන්න</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+                ඔබගේ දායකත්වය මගින් අපට කළ හැක්කේ:
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 2; margin-bottom: 2rem;">
+                <li>🐘 පෙරහැරේ සංවිධානය සහ මහා ඇත්තන්ගේ සුභසාධනය</li>
+                <li>🎭 සම්ප්‍රදායික නර්තන හා කලා සංරක්ෂණය</li>
+                <li>🛕 විහාර භාණ්ඩ නඩත්තුව සහ සංවර්ධනය</li>
+                <li>📿 ධර්ම ප්‍රචාරණය සහ ප්‍රජා සේවය</li>
+            </ul>
+
+            <div class="donation-options">
+                <div class="donation-amount">
+                    <strong>Rs. 1,000</strong>
+                    <p>පන්දම් දායකත්වය</p>
+                </div>
+                <div class="donation-amount">
+                    <strong>Rs. 5,000</strong>
+                    <p>පූජා දායකත්වය</p>
+                </div>
+                <div class="donation-amount">
+                    <strong>Rs. 10,000</strong>
+                    <p>පෙරහැර දායකත්වය</p>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <h4>💳 ගෙවීම් ක්‍රම | Payment Methods</h4>
+                <p style="margin: 1rem 0;"><strong>බැංකු ගිණුම:</strong></p>
+                <p>ගිණුම් නම: ශ්‍රී සමුද්‍රාරාම විහාරය<br>
+                බැංකුව: [Bank Name]<br>
+                ශාඛාව: [Branch]<br>
+                ගිණුම් අංකය: [Account Number]</p>
+                
+                <p style="margin-top: 1.5rem;"><strong>අන්තර්ජාල ගෙවීම්:</strong></p>
+                <p>
+                    📱 Mobile Payment: [Number]<br>
+                    💻 Online Transfer: [Details]
+                </p>
+            </div>
+
+            <div class="gratitude">
+                <h3 style="margin-bottom: 1rem;">🙏 ස්තුතියි සහ ආශීර්වාද 🙏</h3>
+                <p style="font-size: 1.1rem;">
+                    "ඔබගේ දායකත්වය තුළින් පින් සම්පත් වර්ධනය වේවා!<br>
+                    සියලු සත්ත්වයෝ සුවපත් වෙත්වා!"
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.95rem;">
+                    May your generosity bring merit and blessings!<br>
+                    May all beings be happy and well!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">අප හා සම්බන්ධ වන්න</h2>
+        <p class="section-subtitle">Contact Us</p>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3 style="color: var(--maroon); margin-bottom: 2rem; font-size: 1.8rem;">විහාර තොරතුරු</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>ලිපිනය | Address:</strong><br>
+                        ශ්‍රී සමුද්‍රාරාම විහාරය<br>
+                        වාද්දූව, ශ්‍රී ලංකාව
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>දුරකථන | Phone:</strong><br>
+                        +94 XX XXX XXXX
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>විද්‍යුත් ලිපිනය | Email:</strong><br>
+                        info@samudraramaviharaya.lk
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>සංචාරක වේලාව | Visiting Hours:</strong><br>
+                        දිනපතා: උදෑසන 5:00 සිට සවස 8:00 දක්වා<br>
+                        Daily: 5:00 AM to 8:00 PM
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-facebook"></i>
+                    <div>
+                        <strong>Facebook:</strong><br>
+                        <a href="https://www.facebook.com/share/1F8b9GKcFY/" target="_blank" style="color: var(--saffron); text-decoration: none;">
+                            Visit Our Facebook Page
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <div style="text-align: center;">
+                    <i class="fas fa-map-marked-alt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                    <p>Google Maps Location</p>
+                    <small>(Insert map embed code here)</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">මුල් පිටුව</a>
+                <a href="#about">විහාරය ගැන</a>
+                <a href="#perahera">පෙරහැර</a>
+                <a href="#events">වැඩසටහන්</a>
+                <a href="#donate">දායකත්වය</a>
+                <a href="#contact">සම්බන්ධ වන්න</a>
+            </div>
+            <p style="margin: 2rem 0; font-size: 1.1rem;">
+                🪷 ශ්‍රී සමුද්‍රාරාම විහාරය 🪷
+            </p>
+            <p style="font-style: italic; color: var(--gold);">
+                "සාදු! සාදු! සාදු!"<br>
+                May all beings be well and happy
+            </p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                © 2026 ශ්‍රී සමුද්‍රාරාම විහාරය. සියලු හිමිකම් ඇවිරිණි.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'linear-gradient(135deg, rgba(128, 0, 0, 0.98) 0%, rgba(92, 0, 0, 0.98) 100%)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, var(--maroon) 0%, #5C0000 100%)';
+            }
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
+                
